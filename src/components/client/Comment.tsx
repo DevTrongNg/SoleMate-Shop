@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useParams } from "react-router-dom";
 import { IUser } from "../../interface/user";
+import "react-toastify/dist/ReactToastify.css";
+
 interface IComment {
   id: number;
   userId: number;
+  productId: number;
   content: string;
   rating: number;
   date: string;
 }
 
 const ReviewSection = () => {
+  const { id } = useParams();
+  const productId = Number(id);
+
   const [comments, setComments] = useState<IComment[]>([]);
   const [rating, setRating] = useState(5);
   const [content, setContent] = useState("");
@@ -22,7 +29,8 @@ const ReviewSection = () => {
 
   const fetchComments = async () => {
     const { data } = await axios.get("http://localhost:3000/comment");
-    setComments(data.reverse());
+    const filtered = data.filter((cmt: IComment) => cmt.productId === productId);
+    setComments(filtered.reverse());
   };
 
   const handleSubmit = async () => {
@@ -30,6 +38,7 @@ const ReviewSection = () => {
 
     const newComment = {
       userId: user.id,
+      productId,
       content,
       rating,
       date: new Date().toISOString(),
@@ -41,15 +50,16 @@ const ReviewSection = () => {
     setRating(5);
     fetchComments();
   };
-  
-  // Giả sử bạn đã có danh sách users từ API
+
   const getUserName = (userId: number): string => {
     const user = users.find((u) => u.id === userId);
     return user ? user.name : "Ẩn danh";
   };
+
   useEffect(() => {
     fetchComments();
-  }, []);
+  }, [productId]);
+
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get("http://localhost:3000/users");

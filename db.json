@@ -148,114 +148,12 @@
   ],
   "comment": [
     {
-      "name": "df",
+      "userId": 13,
+      "productId": 26,
+      "content": "sdsfd",
       "rating": 5,
-      "content": "df",
-      "id": 1
-    },
-    {
-      "name": "Nguyễn Trọng",
-      "content": "dfg",
-      "rating": 5,
+      "date": "2025-06-26T13:23:23.773Z",
       "id": 2
-    },
-    {
-      "name": "hùng ",
-      "content": "dfg",
-      "rating": 5,
-      "id": 3
-    },
-    {
-      "name": "hùng ",
-      "content": "sdfg",
-      "rating": 2,
-      "id": 4
-    },
-    {
-      "name": "hùng ",
-      "content": "dfb",
-      "rating": 5,
-      "id": 5
-    },
-    {
-      "name": "hùng ",
-      "content": "df",
-      "rating": 5,
-      "id": 6
-    },
-    {
-      "name": "hùng ",
-      "content": "dfb",
-      "rating": 1,
-      "id": 7
-    },
-    {
-      "name": "hùng ",
-      "content": "như sfgdg",
-      "rating": 5,
-      "id": 8
-    },
-    {
-      "name": "hùng ",
-      "content": "dfg",
-      "rating": 4,
-      "id": 9
-    },
-    {
-      "content": "rdthyfgkj",
-      "rating": 1,
-      "userId": 18,
-      "name": "hùng ",
-      "id": 10
-    },
-    {
-      "content": "dfg",
-      "rating": 1,
-      "userId": 18,
-      "name": "hùng ",
-      "id": 11
-    },
-    {
-      "content": "rdtfyu",
-      "rating": 3,
-      "userId": 18,
-      "name": "hùng ",
-      "id": 12
-    },
-    {
-      "content": "11",
-      "rating": 1,
-      "userId": 18,
-      "name": "hùng ",
-      "id": 13
-    },
-    {
-      "content": "1",
-      "rating": 2,
-      "userId": 18,
-      "name": "hùng ",
-      "id": 14
-    },
-    {
-      "userId": 18,
-      "content": "rsthyu",
-      "rating": 4,
-      "date": "2025-06-26T10:08:38.252Z",
-      "id": 15
-    },
-    {
-      "userId": 18,
-      "content": "dfdg",
-      "rating": 5,
-      "date": "2025-06-26T10:09:00.642Z",
-      "id": 16
-    },
-    {
-      "userId": 18,
-      "content": "srdthfygh",
-      "rating": 5,
-      "date": "2025-06-26T13:08:10.094Z",
-      "id": 17
     }
   ]
 }

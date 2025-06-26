@@ -19,7 +19,10 @@ const AdminSidebar = () => {
         <Link to='/dashboard/category-list'>list danh mục</Link>
       </li>
       <li className='p-2 bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer'>
-        <Link to='/dashboard/account'>account</Link>
+        <Link to='/dashboard/account'>Quản lý tài khoản</Link>
+      </li>
+      <li className='p-2 bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer'>
+        <Link to='/dashboard/comment'>Quản lý bình luận</Link>
       </li>
       </ul>
     </div>
