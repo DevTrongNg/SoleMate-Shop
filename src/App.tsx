@@ -21,6 +21,7 @@ import AddCategory from "./components/admin/Category/addCategory";
 import EditCategory from "./components/admin/Category/editCategory";
 import ListCategory from "./components/admin/Category/ListCategory";
 import ClientLayout from "./layout/client";
+import Cart from "./components/client/cart";
 
 function App() {
   // Khai báo routes
@@ -37,6 +38,7 @@ function App() {
         { path: "login", element: <Login /> },
         { path: "detailProduct/:id", element: <DetailProduct /> },
         { path: "allProduct", element: <AllProduct /> },
+        { path: "cart", element: <Cart /> },
         // { path: 'search', element: <Search /> }, // nếu cần dùng lại sau
       ],
     },
