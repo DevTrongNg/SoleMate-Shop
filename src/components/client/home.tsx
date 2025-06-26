@@ -72,6 +72,24 @@ const Home = (props: Props) => {
   }, []);
   return (
     <main className="bg-[#F8F4F0] py-10 relative">
+      <div className="w-full bg-gradient-to-r from-[#B5DCB0] to-[#F9F3EE]">
+        <div className="container w-[1200px] h-[597px] mx-auto bg-[url('/img/1.png')] bg-auto flex items-center px-10">
+          <div className="w-[650px] h-[300px]">
+            <h2 className="font-baloo text-[#505F4E] text-[55px] font-bold no-underline leading-[1.2]">
+              Wir kümmern uns um Ihre <br /> schöner Garten und Haus
+            </h2>
+            <p className="w-[500px] font-poppins text-[15px] text-[#665345] my-[10px] leading-[1.5]">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s,
+            </p>
+            <button className="border-2 border-[#505F4E] px-5 py-2 my-[10px] font-poppins text-[15px] text-[#665345] hover:bg-[#505F4E] hover:text-white transition-all">
+              Lern mehr
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Section: Best Sellers */}
       <section className="container w-[1200px] mx-auto relative z-10">
         <h3 className="text-[30px] font-bold text-[#505F4E] border-b pb-2 mb-8 font-baloo">
