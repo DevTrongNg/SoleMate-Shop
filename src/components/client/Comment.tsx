@@ -7,10 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 interface IComment {
   id: number;
-  userId: number;
   productId: number;
+  userId: number;
   content: string;
-  rating: number;
+  rating: number; // số sao từ 1 đến 5
   date: string;
 }
 
@@ -29,7 +29,9 @@ const ReviewSection = () => {
 
   const fetchComments = async () => {
     const { data } = await axios.get("http://localhost:3000/comment");
-    const filtered = data.filter((cmt: IComment) => cmt.productId === productId);
+    const filtered = data.filter(
+      (cmt: IComment) => cmt.productId === productId
+    );
     setComments(filtered.reverse());
   };
 
@@ -73,11 +75,59 @@ const ReviewSection = () => {
   const currentComments = comments.slice(indexOfFirst, indexOfLast);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  //tính logic đánh giá
+  // Đếm tổng số sao & trung bình
+  const totalComments = comments.length;
+  const totalRating = comments.reduce((sum, cmt) => sum + cmt.rating, 0);
+  const averageRating = totalComments
+    ? (totalRating / totalComments).toFixed(1)
+    : "0.0";
+
+  // Đếm số lượng đánh giá theo sao
+  const ratingCounts = [1, 2, 3, 4, 5].reduce((acc, star) => {
+    acc[star] = comments.filter((c) => c.rating === star).length;
+    return acc;
+  }, {} as Record<number, number>);
+
+  // Tính phần trăm mỗi loại sao
+  const ratingPercentages = [1, 2, 3, 4, 5].reduce((acc, star) => {
+    acc[star] = totalComments
+      ? Math.round((ratingCounts[star] / totalComments) * 100)
+      : 0;
+    return acc;
+  }, {} as Record<number, number>);
 
   return (
     <div className="mt-10">
       <ToastContainer position="bottom-right" />
       <h2 className="text-2xl font-bold mb-4">Đánh giá & Bình luận</h2>
+
+      <div>
+        <div className="flex items-center gap-2">
+          <div className="text-3xl font-bold text-gray-800">
+            {"★".repeat(Math.round(Number(averageRating)))}
+          </div>
+          <span className="text-green-600 text-2xl font-semibold">
+            {averageRating}
+          </span>
+          <span className="text-gray-500">({totalComments})</span>
+        </div>
+
+        <div className="mt-2 space-y-1">
+          {[5, 4, 3, 2, 1].map((num) => (
+            <div key={num} className="flex items-center gap-2">
+              <span className="text-gray-700">{num}★</span>
+              <div className="w-64 h-2 bg-gray-300 rounded-full">
+                <div
+                  className="h-full bg-yellow-500 rounded-full"
+                  style={{ width: `${ratingPercentages[num]}%` }}
+                ></div>
+              </div>
+              <span className="text-gray-500">({ratingCounts[num] || 0})</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Bình luận mới */}
       <div className="mb-6">
