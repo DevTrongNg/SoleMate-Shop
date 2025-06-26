@@ -13,7 +13,9 @@ interface IUser {
 
 const Account = () => {
   const [users, setUsers] = useState<IUser[]>([]);
-  const [selectedRole, setSelectedRole] = useState<"all" | "admin" | "client">("all");
+  const [selectedRole, setSelectedRole] = useState<"all" | "admin" | "client">(
+    "all"
+  );
 
   useEffect(() => {
     fetchUsers();
@@ -29,7 +31,9 @@ const Account = () => {
   };
 
   const handleDelete = async (id: number) => {
-    const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa người dùng này?");
+    const confirmDelete = window.confirm(
+      "Bạn có chắc chắn muốn xóa người dùng này?"
+    );
     if (!confirmDelete) return;
 
     try {
@@ -38,6 +42,25 @@ const Account = () => {
       setUsers(users.filter((u) => u.id !== id));
     } catch (error) {
       toast.error("❌ Lỗi khi xóa người dùng.");
+    }
+  };
+
+  const handleRoleChange = async (
+    userId: number,
+    newRole: "admin" | "client"
+  ) => {
+    try {
+      await axios.patch(`http://localhost:3000/users/${userId}`, {
+        role: newRole,
+      });
+
+      setUsers((prevUsers) =>
+        prevUsers.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
+      );
+
+      toast.success("✅ Cập nhật vai trò thành công!");
+    } catch (error) {
+      toast.error("❌ Cập nhật vai trò thất bại!");
     }
   };
 
@@ -82,7 +105,21 @@ const Account = () => {
               <td className="py-2 px-4">{user.name}</td>
               <td className="py-2 px-4">{user.email}</td>
               <td className="py-2 px-4">{user.phone}</td>
-              <td className="py-2 px-4 capitalize">{user.role}</td>
+              <td className="py-2 px-4">
+                <select
+                  value={user.role}
+                  onChange={(e) =>
+                    handleRoleChange(
+                      user.id,
+                      e.target.value as "admin" | "client"
+                    )
+                  }
+                  className="border border-gray-300 rounded px-2 py-1 text-sm capitalize"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="client">Client</option>
+                </select>
+              </td>
               <td className="py-2 px-4 text-center">
                 <button
                   className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"

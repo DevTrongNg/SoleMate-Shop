@@ -57,7 +57,7 @@ const Home = (props: Props) => {
 
   return (
     <div>
-      {/* Header Section */}
+      
    
       <div className="w-full bg-gradient-to-r from-[#B5DCB0] to-[#F9F3EE] py-[50px]">
         <div className="container w-[1200px] mx-auto font-baloo text-[#505F4E] text-[30px] font-bold">

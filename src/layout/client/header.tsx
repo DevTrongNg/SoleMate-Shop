@@ -107,7 +107,10 @@ const ClientHeader = () => {
 
           {/* Menu */}
           <div className="flex justify-around py-[5px] text-white">
-            <h4>Growbox</h4>
+            <a href="allProduct">
+              {" "}
+              <h4>Growbox</h4>
+            </a>
             <h4>Dünger</h4>
             <h4>Erde & Substrate</h4>
             <h4>Töpfe & Behälter</h4>
