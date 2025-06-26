@@ -14,7 +14,7 @@ const Register = (props: Props) => {
             const {data} = await axios.post(`http://localhost:3000/register`,user)
             alert('Đăng ký thành công')
             // console.log(data);
-            // navigate('/')
+            navigate('/login')
         } catch (error:any) {
             alert(error.response.data??error.message)
             console.log(error);            

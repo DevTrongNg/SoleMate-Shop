@@ -3,12 +3,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IProduct } from "../../interface/product";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { IComment } from "../../interface/comment";
+import ReviewSection from "./Comment";
 
 const DetailProduct = () => {
   const { id } = useParams(); // Lấy id từ URL
   const [product, setProduct] = useState<IProduct | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [newReview, setNewReview] = useState({
+    name: "",
+    rating: 5,
+    content: "",
+  });
+
+
 
   useEffect(() => {
     const getProduct = async () => {
@@ -126,7 +135,7 @@ const DetailProduct = () => {
               >
                 Add to cart
               </button>
-               <ToastContainer position="bottom-right" autoClose={2000} />
+              <ToastContainer position="bottom-right" autoClose={2000} />
             </div>
           </div>
         </div>
@@ -152,71 +161,8 @@ const DetailProduct = () => {
           </p>
         </div>
         {/* đánh giá */}
-        <div className="mt-10">
-          {/* Phần trên: Ảnh + Đánh giá */}
-          <div className="flex items-center gap-6">
-            {/* Ảnh sản phẩm */}
-            <img
-              src="https://png.pngtree.com/png-clipart/20220909/original/pngtree-dangerous-barrel-png-image_8508231.png"
-              alt="Product"
-              className="w-40 h-40 object-cover"
-            />
-
-            {/* Đánh giá */}
-            <div>
-              <div className="flex items-center gap-2">
-                <div className="text-3xl font-bold text-gray-800">★★★★★</div>
-                <span className="text-green-600 text-2xl font-semibold">
-                  5.0
-                </span>
-                <span className="text-gray-500">(388)</span>
-              </div>
-
-              {/* Thanh tiến trình đánh giá */}
-              <div className="mt-2 space-y-1">
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <div key={num} className="flex items-center gap-2">
-                    <span className="text-gray-700">{num}★</span>
-                    <div className="w-64 h-2 bg-gray-300 rounded-full">
-                      <div
-                        className={`h-full bg-gray-500 rounded-full w-${
-                          num * 10
-                        }`}
-                      ></div>
-                    </div>
-                    <span className="text-gray-500">(388)</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Nút Viết đánh giá */}
-          <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
-            Write reviews
-          </button>
-
-          {/* Danh sách đánh giá */}
-          <div className="mt-8 space-y-6">
-            {[1, 2, 3].map((review) => (
-              <div key={review} className="border-b pb-4">
-                <h4 className="text-green-700 font-semibold text-lg flex items-center">
-                  Aman Gupta <span className="ml-2 text-black">★★★★★</span>
-                </h4>
-                <p className="text-gray-700">
-                  I've been using this cleanser for about five or six months now
-                  and my acne is almost completely gone. 100% recommend and will
-                  continue to use for sure.
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Nút See all */}
-          <button className="mt-6 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
-            See all
-          </button>
-        </div>
+        <ReviewSection />
+        {/* and đánh giá */}
       </div>
       <div className="container max-w-[1000px] mx-auto">
         <h2 className=" font-baloo text-[40px] font-bold text-[#505F4E] line">

@@ -112,6 +112,58 @@
       "repassword": "1@gmail.com",
       "id": 14,
       "role": "client"
+    },
+    {
+      "email": "12@gmail.com",
+      "password": "$2a$10$Gmi4ZBHIYGMw5QfKUXWPEOapJZS1.A0FS6ippE9KU2/5Tq2TTd1n2",
+      "name": "hùng ",
+      "phone": "0328819987",
+      "repassword": "12@gmail.com",
+      "id": 15
+    },
+    {
+      "email": "123456@gmail.com",
+      "password": "$2a$10$ejVSHTc.W7LEHfLxe3P3Cec9t1DYELAlJ.dcs6/klu/Mo1VeaoSkO",
+      "name": "hùng ",
+      "phone": "0328819987",
+      "repassword": "123456@gmail.com",
+      "id": 16
+    },
+    {
+      "email": "3@gmail.com",
+      "password": "$2a$10$SKg15hFVCsdLIH4GZums8u2TX/fTTvGyUi7W2P2dY1pXDWFqZMn7O",
+      "name": "hùng ",
+      "phone": "0328819987",
+      "repassword": "3@gmail.com",
+      "id": 17
+    },
+    {
+      "email": "34@gmail.com",
+      "password": "$2a$10$nLvsFrEnXT3re3NSmj/K6uAvNwzXT5sFDJ1Nbyn9WgCzrYqoZgue6",
+      "name": "hùng ",
+      "phone": "0328819987",
+      "repassword": "34@gmail.com",
+      "id": 18
+    }
+  ],
+  "comment": [
+    {
+      "name": "df",
+      "rating": 5,
+      "content": "df",
+      "id": 1
+    },
+    {
+      "name": "Nguyễn Trọng",
+      "content": "dfg",
+      "rating": 5,
+      "id": 2
+    },
+    {
+      "name": "hùng ",
+      "content": "dfg",
+      "rating": 5,
+      "id": 3
     }
   ]
 }
