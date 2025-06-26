@@ -23,6 +23,7 @@ import ListCategory from "./components/admin/Category/ListCategory";
 import ClientLayout from "./layout/client";
 import Cart from "./components/client/cart";
 import AuthGuard from "./components/client/AuthGuard";
+import Account from "./components/admin/account/account";
 
 function App() {
   // Khai báo routes
@@ -58,6 +59,7 @@ function App() {
             { path: "category-list", element: <ListCategory /> },
             { path: "category-add", element: <AddCategory /> },
             { path: "category-edit/:id", element: <EditCategory /> },
+            { path: "account", element: <Account /> }
           ],
         },
       ],

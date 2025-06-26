@@ -4,6 +4,7 @@ export interface IUser{
     email:string;
     phone:string;
     password:string;
+    role: "admin" | "client";
 }
 export interface IRegister extends IUser{
     repassword?:string
