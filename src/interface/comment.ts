@@ -1,6 +1,7 @@
- export interface IComment {
-  id?: number;
-  name: string;
-  rating: number;
+interface IComment {
+  id: number;
+  userId: number;
   content: string;
+  rating: number;
+  date: string;
 }

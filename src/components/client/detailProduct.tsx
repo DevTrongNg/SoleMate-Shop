@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { IProduct } from "../../interface/product";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { IComment } from "../../interface/comment";
+
 import ReviewSection from "./Comment";
 
 const DetailProduct = () => {
