@@ -25,6 +25,7 @@ const Comment = () => {
   const [comments, setComments] = useState<IComment[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [selectedRating, setSelectedRating] = useState<number | "all">("all");
 
   // Lấy dữ liệu từ db.json
   useEffect(() => {
@@ -61,7 +62,7 @@ const Comment = () => {
     if (confirm("Bạn có chắc muốn xoá bình luận này không?")) {
       try {
         await axios.delete(`http://localhost:3000/comment/${id}`);
-        setComments(comments.filter((c) => c.id !== id));
+        setComments((prev) => prev.filter((c) => c.id !== id));
         toast.success("🗑️ Xoá bình luận thành công!");
       } catch (err) {
         toast.error("❌ Lỗi khi xoá bình luận.");
@@ -69,10 +70,36 @@ const Comment = () => {
     }
   };
 
+  // Lọc đánh giá
+  const filteredComments = selectedRating === "all"
+    ? comments
+    : comments.filter((cmt) => cmt.rating === selectedRating);
+
   return (
     <div className="container mx-auto px-4 py-6">
       <ToastContainer position="bottom-right" />
-      <h2 className="text-2xl font-bold mb-6">Quản lý bình luận theo sản phẩm</h2>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-bold">Quản lý bình luận theo sản phẩm</h2>
+
+        {/* Bộ lọc đánh giá */}
+        <div className="flex items-center gap-2">
+          <label className="font-medium">Lọc theo đánh giá:</label>
+          <select
+            value={selectedRating}
+            onChange={(e) =>
+              setSelectedRating(e.target.value === "all" ? "all" : Number(e.target.value))
+            }
+            className="border p-1 rounded"
+          >
+            <option value="all">Tất cả</option>
+            {[5, 4, 3, 2, 1].map((star) => (
+              <option key={star} value={star}>
+                {star} ★
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       <table className="min-w-full bg-white border rounded-lg shadow-sm">
         <thead className="bg-green-600 text-white">
@@ -86,13 +113,15 @@ const Comment = () => {
           </tr>
         </thead>
         <tbody>
-          {comments.map((cmt) => (
+          {filteredComments.map((cmt) => (
             <tr key={cmt.id} className="border-t hover:bg-gray-50 transition">
               <td className="py-2 px-4">{getProductName(cmt.productId)}</td>
               <td className="py-2 px-4">{getUserName(cmt.userId)}</td>
               <td className="py-2 px-4 text-yellow-500">{"★".repeat(cmt.rating)}</td>
               <td className="py-2 px-4">{cmt.content}</td>
-              <td className="py-2 px-4 text-sm text-gray-500">{new Date(cmt.date).toLocaleDateString()}</td>
+              <td className="py-2 px-4 text-sm text-gray-500">
+                {new Date(cmt.date).toLocaleDateString()}
+              </td>
               <td className="py-2 px-4 text-center">
                 <button
                   onClick={() => handleDelete(cmt.id)}
@@ -103,6 +132,13 @@ const Comment = () => {
               </td>
             </tr>
           ))}
+          {filteredComments.length === 0 && (
+            <tr>
+              <td colSpan={6} className="text-center py-4 text-gray-500">
+                Không có bình luận nào.
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
