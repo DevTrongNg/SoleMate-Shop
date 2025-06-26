@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { IProduct } from '../interface/product'
-import { IOrder } from '../interface/orders'
+import { IProduct } from '../../interface/product'
+import { IOrder } from '../../interface/orders'
 
 type Props = {}
 

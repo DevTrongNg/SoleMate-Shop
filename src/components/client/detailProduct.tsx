@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IProduct } from "../interface/product";
+import { IProduct } from "../../interface/product";
 
 const DetailProduct = () => {
   const { id } = useParams(); // Lấy id từ URL

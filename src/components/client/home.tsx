@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { IProduct } from "../interface/product";
+import { IProduct } from "../../interface/product";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { ICategory } from "../interface/category";
+import { ICategory } from "../../interface/category";
 
 type Props = {};
 

@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { IProductForm } from "../../interface/product";
-import { ICategory } from "../../interface/category";
+import { IProductForm } from "../../../interface/product";
+import { ICategory } from "../../../interface/category";
 
 type Props = {};
 

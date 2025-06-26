@@ -1,5 +1,5 @@
 import React from 'react'
-import { IOrder } from '../interface/orders'
+import { IOrder } from '../../interface/orders'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { ICategory } from '../../interface/category'
+
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { ICategory } from '../../../interface/category'
 
 type Props = {}
 

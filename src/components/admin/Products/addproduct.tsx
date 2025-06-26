@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { IProductForm } from "../../interface/product";
+import { IProductForm } from "../../../interface/product";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";

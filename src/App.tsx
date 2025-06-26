@@ -1,26 +1,26 @@
 import axios from 'axios';
 import { useRoutes } from 'react-router-dom';
-import OrderAdd from './components/orderadd';
-import OrderList from './components/orderlist';
+import OrderAdd from './components/client/orderadd';
+import OrderList from './components/client/orderlist';
 
-import Home from './components/home';
+import Home from './components/client/home';
 // import Search from './components/Search';
-import DetailProduct from './components/detailProduct';
-import AllProduct from './components/allProduct'; 
+import DetailProduct from './components/client/detailProduct';
+import AllProduct from './components/client/allProduct'; 
 
-import AddProduct from './components/Products/addproduct';
-import EditProduct from './components/Products/editproduct';
-import ListProduct from './components/Products/ListProduct'; 
+import AddProduct from './components/admin/Products/addproduct';
+import EditProduct from './components/admin/Products/editproduct';
+import ListProduct from './components/admin/Products/ListProduct'; 
 
-import ListCategory from './components/Category/ListCategory'; 
-import AddCategory from './components/Category/addCategory'; 
-import EditCategory from './components/Category/editCategory'; 
 
-import Register from './components/register';
-import Login from './components/login';
+import Register from './components/client/register';
+import Login from './components/client/login';
 
 import AdminLayout from './layout/admin';
 import Dashboard from './layout/admin/dashboard';
+import AddCategory from './components/admin/Category/addCategory';
+import EditCategory from './components/admin/Category/editCategory';
+import ListCategory from './components/admin/Category/ListCategory';
 
 
 function App() {
