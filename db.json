@@ -99,95 +99,26 @@
       "name": "Ngọc",
       "phone": "0989898989",
       "repassword": "123456",
+      "role": "client",
       "id": 1
     },
     {
-      "email": "trongnguyen06042005@gmail.com",
-      "password": "$2a$10$6mlGs0IWdSJkrMcFcE3Pp.TNliRQFfIABr8G9fjjg7EDXN6NGJLDW",
-      "name": "Nguyễn văn trọng",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$me3rXLxIRvQqoz.1oJNzRee2GYsTQudR2og3uSgXH0hRD3/F4vCyS",
+      "name": "Nguyễn Trọng",
       "phone": "0328819987",
-      "repassword": "123456",
-      "id": 2
+      "repassword": "admin@gmail.com",
+      "role": "admin",
+      "id": 13
     },
     {
-      "email": "trongnguyen@gmail.com",
-      "password": "$2a$10$ivkMZMCYq0nvH7p4By7UiOBc5nnUAaPD9CNaayGSioOBk1g/D7Sl6",
-      "name": "Nguyễn văn trọng",
-      "phone": "0328819987",
-      "repassword": "1234",
-      "id": 3
-    },
-    {
-      "email": "trongnguyen1@gmail.com",
-      "password": "$2a$10$e6DL7kpnWBJXVZcJeLUMYelTDvmAl5MGXY.I80Ik2gLt/FWwfjj7u",
-      "name": "Nguyễn văn trọng",
-      "phone": "0328819987",
-      "repassword": "1234",
-      "id": 4
-    },
-    {
-      "email": "trongnguyen0604@gmail.com",
-      "password": "$2a$10$WDjkaTe0UvuLipd.b.uTL.bpUfXquXdY8q/Mw5lfU/pPMDRlGhEIK",
-      "name": "trong",
-      "phone": "0328819987",
-      "repassword": "123321",
-      "id": 5
-    },
-    {
-      "email": "trongnguyen12@gmail.com",
-      "password": "$2a$10$F1V4PZtbsRSEadzAYHMGieHPrn8oUiYPA6xXjZ9YmrJ02uxmUOx2e",
-      "name": "trongg",
-      "phone": "0328819987",
-      "repassword": "123321",
-      "id": 6
-    },
-    {
-      "email": "trongnguyen434@gmail.com",
-      "password": "$2a$10$.mtNoCIDL00jVvUt.ow0R.y4dPyw9qauZuxTd5AoZTDVsVy9NDIX.",
-      "name": "tronggửgwrg",
-      "phone": "0328819987",
-      "repassword": "123123",
-      "id": 7
-    },
-    {
-      "email": "trongnguyen11@gmail.com",
-      "password": "$2a$10$GLcJwB99h9I0AjyrnIqCYeUtrYdR3c5HItS/xES690h0iiJbzlGM2",
-      "name": "trongg",
-      "phone": "0328819987",
-      "repassword": "123321",
-      "id": 8
-    },
-    {
-      "email": "trongnguyen060420051@gmail.com",
-      "password": "$2a$10$6MI7.gRwmYRlM62Ebpgby.64WHKVjy73myqNnksB2OOcfw40kJmf2",
-      "name": "trọng",
-      "phone": "0328819987",
-      "repassword": "123321",
-      "id": 9
-    },
-    {
-      "email": "trong321@gmail.com",
-      "password": "$2a$10$NSxDU5Wc1PZvzAOIxinCyO0sYdR0NSt6j2ALSM42mHNaODgUl91ga",
-      "name": "ntrong",
-      "phone": "0328819987",
-      "repassword": "123456",
-      "id": 10
-    },
-    {
-      "email": "23456@gmail.com",
-      "password": "$2a$10$v2DF.312DS1l5Teq2brPNezEO/.8Iirn10/eMSzM8SxCzSQ1yx/eC",
-      "name": "nguyễn trọngdf",
-      "phone": "0328819987",
-      "repassword": "23456@gmail.com",
-      "id": 11
-    },
-    {
-      "email": "trongnguyenrdtyui06042005@gmail.com",
-      "password": "$2a$10$wupUqcLR4Enj4tQR3CwAFOTPIF2pwJfLrsDhGBO1mYN/YvqcWngda",
+      "email": "1@gmail.com",
+      "password": "$2a$10$hf9ouNsA/7pCyFYtHeNrfeJwbcf5fOUbvtvJejtDGPCuuC4TY68R6",
       "name": "nguyễn trọng",
       "phone": "0328819987",
-      "repassword": "trongnguyenrdtyui06042005@gmail.com",
-      "id": 12
+      "repassword": "1@gmail.com",
+      "id": 14,
+        "role": "client"
     }
   ]
 }

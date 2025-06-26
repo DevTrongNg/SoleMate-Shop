@@ -1,68 +1,107 @@
 import React from "react";
-import { ILoginForm } from "../../interface/user";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-type Props = {};
+interface ILoginForm {
+  email: string;
+  password: string;
+}
 
-const Login = (props: Props) => {
+const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<ILoginForm>();
   const navigate = useNavigate();
+
+  // Trong Login.tsx:
   const onSubmit = async (user: ILoginForm) => {
     try {
       const { data } = await axios.post(`http://localhost:3000/login`, user);
-      alert("Đăng nhập thành công");
-      navigate("/");
+
+      const role = data.user.role || "client";
+
+      toast.success("✅ Đăng nhập thành công!");
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      setTimeout(() => {
+        if (role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
+      }, 1500);
     } catch (error: any) {
-      alert(error.response.data ?? error.message);
-      console.log(error);
+      toast.error(
+        "❌ Đăng nhập thất bại: " + (error.response?.data || error.message)
+      );
     }
   };
+
   return (
-    <div>
-        
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <ToastContainer position="bottom-right" autoClose={2000} />
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Đăng nhập tài khoản
+        </h1>
 
-      <div className="max-w-md mx-auto my-10 py-12 px-8 bg-white shadow-lg rounded-lg ">
-      <h1 className="font-bold text-2xl text-center text-gray-800">Đăng nhập tài khoản</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 mt-6">
-        <div>
-          <input
-            type="text"
-            placeholder="Email"
-            {...register("email", {
-              pattern: /^\S+@+(\S+\.)+[a-zA-Z]{2,6}$/,
-              required: true,
-            })}
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-          />
-          {errors.email && (
-            <span className="text-red-600 text-sm">Email không đúng định dạng</span>
-          )}
-        </div>
-        <div>
-          <input
-            type="password"
-            {...register("password", { required: true })}
-            placeholder="Mật khẩu"
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-          />
-        </div>
-        <div className="flex justify-between items-center text-sm">
-          <a href="/register" className="text-green-700 hover:underline">Đăng ký</a>
-        </div>
-        <button className="w-full bg-green-700 text-white py-2 rounded-lg font-semibold hover:bg-green-800 transition duration-200">
-          Đăng nhập
-        </button>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <input
+              type="text"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email không được để trống",
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: "Email không đúng định dạng",
+                },
+              })}
+              className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
+            />
+            {errors.email && (
+              <p className="text-red-600 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
-    
+          <div>
+            <input
+              type="password"
+              {...register("password", {
+                required: "Mật khẩu không được để trống",
+              })}
+              placeholder="Mật khẩu"
+              className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
+            />
+            {errors.password && (
+              <p className="text-red-600 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex justify-between text-sm text-green-700">
+            <a href="/register" className="hover:underline">
+              Bạn chưa có tài khoản? Đăng ký
+            </a>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-green-700 text-white py-3 rounded-lg font-semibold hover:bg-green-800 transition"
+          >
+            Đăng nhập
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -22,11 +22,12 @@ import EditCategory from "./components/admin/Category/editCategory";
 import ListCategory from "./components/admin/Category/ListCategory";
 import ClientLayout from "./layout/client";
 import Cart from "./components/client/cart";
+import AuthGuard from "./components/client/AuthGuard";
 
 function App() {
   // Khai báo routes
+
   const routes = useRoutes([
-    // CLIENT LAYOUT
     {
       path: "/",
       element: <ClientLayout />,
@@ -39,23 +40,26 @@ function App() {
         { path: "detailProduct/:id", element: <DetailProduct /> },
         { path: "allProduct", element: <AllProduct /> },
         { path: "cart", element: <Cart /> },
-        // { path: 'search', element: <Search /> }, // nếu cần dùng lại sau
       ],
     },
 
-    // ADMIN LAYOUT
     {
       path: "/dashboard",
-      element: <AdminLayout />,
+      element: <AuthGuard />, // Bọc bằng AuthGuard
       children: [
-        { path: "", element: <Dashboard /> },
-        { path: "product-add", element: <AddProduct /> },
-        { path: "product-list", element: <ListProduct /> },
-        { path: "product-edit/:id", element: <EditProduct /> },
-
-        { path: "category-list", element: <ListCategory /> },
-        { path: "category-add", element: <AddCategory /> },
-        { path: "category-edit/:id", element: <EditCategory /> },
+        {
+          path: "",
+          element: <AdminLayout />,
+          children: [
+            { path: "", element: <Dashboard /> },
+            { path: "product-add", element: <AddProduct /> },
+            { path: "product-list", element: <ListProduct /> },
+            { path: "product-edit/:id", element: <EditProduct /> },
+            { path: "category-list", element: <ListCategory /> },
+            { path: "category-add", element: <AddCategory /> },
+            { path: "category-edit/:id", element: <EditCategory /> },
+          ],
+        },
       ],
     },
   ]);
